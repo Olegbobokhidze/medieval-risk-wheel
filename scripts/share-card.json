@@ -1,0 +1,51 @@
+{
+  "publicDir": "public",
+  "devUrl": "http://localhost:5175/",
+  "shot": {
+    "viewport": [
+      1440,
+      810
+    ],
+    "dpr": 2,
+    "query": "./",
+    "waitMs": 2500
+  },
+  "icon": {
+    "bg": "#1E1A16",
+    "applePad": 0.08
+  },
+  "card": {
+    "bg": "#1E1A16",
+    "ink": "#F1E4C6",
+    "muted": "#A8987C",
+    "accent": "#D4A24C",
+    "backdrop": "radial-gradient(900px 560px at 78% 50%, rgba(212,162,76,0.10), transparent 70%)",
+    "fontsHref": "https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap",
+    "bodyFont": "'EB Garamond', Georgia, serif",
+    "displayFont": "'IM Fell English SC', Georgia, serif",
+    "subFont": "'EB Garamond', Georgia, serif",
+    "subStyle": "italic",
+    "eyebrow": "Medieval risk wheel",
+    "title": "The Sovereign’s Trial",
+    "titleSize": 64,
+    "titleLineHeight": 64,
+    "subtitle": "& the Alchemist Wheel",
+    "tagline": "Spin the wheel, climb from Novitiate to Sovereign and claim the treasury before a skull ends the trial.",
+    "features": [
+      "Five-rung escalation ladder",
+      "Three standards of risk, from Squire to Sovereign",
+      "Hand-drawn alchemist, raven and wheel"
+    ],
+    "panelWidth": 660,
+    "crop": {
+      "x": 168,
+      "y": 140,
+      "w": 726,
+      "h": 615
+    },
+    "fadeX": 90,
+    "fadeY": 40,
+    "author": "Oleg Bobokhidze",
+    "copyWidth": 460
+  }
+}
