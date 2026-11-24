@@ -1,0 +1,67 @@
+/*
+ * Medieval court tokens (ADR-0003). Even, integer-pixel line heights only. No neon, no glow, no purple/cyan.
+ */
+:root {
+  --ink: #1a140e;
+  --ink-2: #241b12;
+  --ink-soft: #4a3a28;
+  --vellum: #f3e7ce;
+  --vellum-2: #ebdcbb;
+  --vellum-3: #dcc79b;
+  --vellum-edge: #b99f6e;
+  --gold: #d4a24c;
+  --gold-light: #ebcb82;
+  --gold-dark: #8e6a2a;
+  --brass: #b8893a;
+  --iron: #2a2622;
+  --iron-2: #3a352f;
+  --iron-light: #5a534b;
+  --iron-edge: #14110e;
+  --oak: #5b3b22;
+  --oak-dark: #38240f;
+  --oak-light: #7a5232;
+  --stone: #1e1a16;
+  --stone-2: #28231e;
+  --stone-3: #332c25;
+  --mortar: #15120f;
+  --crimson: #7a1f1f;
+  --crimson-2: #922a24;
+  --crimson-deep: #4e1210;
+  --soot: #1c1411;
+  --sage: #55613a;
+
+  --font-display: 'IM Fell English SC', 'Cinzel', Georgia, 'Times New Roman', serif;
+  --font-caps: 'Cinzel', 'IM Fell English SC', Georgia, serif;
+  --font-text: 'EB Garamond', Garamond, Georgia, 'Times New Roman', serif;
+
+  --fs-11: 11px; --lh-11: 16px;
+  --fs-12: 12px; --lh-12: 16px;
+  --fs-14: 14px; --lh-14: 20px;
+  --fs-16: 16px; --lh-16: 24px;
+  --fs-18: 18px; --lh-18: 24px;
+  --fs-20: 20px; --lh-20: 28px;
+  --fs-24: 24px; --lh-24: 32px;
+  --fs-28: 28px; --lh-28: 36px;
+  --fs-32: 32px; --lh-32: 40px;
+  --fs-44: 44px; --lh-44: 52px;
+
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --tap: 44px;
+
+  /* directional lamp-light shadows (upper-left light) instead of default drop shadows */
+  --cast: 3px 4px 0 rgb(10 6 2 / 0.55);
+  --cast-soft: 6px 10px 18px -8px rgb(8 4 1 / 0.7);
+  --bevel: inset 1px 1px 0 rgb(255 240 210 / 0.18), inset -1px -2px 0 rgb(0 0 0 / 0.4);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* paper grain: SVG turbulence, no image files */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .34 0 0 0 0 .24 0 0 0 0 .12 0 0 0 .24 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* stone speckle */
+  --speckle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .6 0 0 0 0 .55 0 0 0 0 .5 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+}
