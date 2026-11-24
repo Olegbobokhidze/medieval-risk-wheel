@@ -103,7 +103,7 @@ describe('controller × MockProvider', () => {
     controller.start();
     await settle();
     const s = controller.getSnapshot();
-    if (s.trial?.spins[0]?.kind === 'curse' && !provider.wasTampered(s.trial.trialId)) return; // the fair spin was already a curse
+    expect(provider.wasTampered(s.trial?.trialId ?? '')).toBe(true);
     expect(s.state).toBe(TrialState.ROUND_OVER_BUST);
     const v = await verify(controller);
     expect(v.commitmentOk).toBe(true);

@@ -181,16 +181,17 @@ export function createTrialSpec(rules: LadderRules): MachineSpec<TrialState, Tri
         }
         const requestId = ctx.requestSeq + 1;
         const request: OpenTrialRequest = { ...ctx.params, requestId };
+        // The wheel launches on the press itself (instant physical feedback); a failed open lets it coast to rest.
         return ok(
           { ...ctx, state: TrialState.CONFIGURING, requestSeq: requestId, inFlight: { kind: 'open', request }, balance: ctx.balance - ctx.params.bet, trial: null, error: null, lastOutcome: null },
-          [{ type: 'OPEN_TRIAL', request }],
+          [{ type: 'LAUNCH_WHEEL', turbo: ctx.turbo, rung: 0 }, { type: 'OPEN_TRIAL', request }],
         );
       }
 
       case E.OPENED: {
         const f = ctx.inFlight;
         if (!f || f.kind !== 'open' || ev.result.requestId !== f.request.requestId) return no(Reject.STALE_REQUEST);
-        if (!ev.result.ok) return toError({ ...ctx, inFlight: null }, ev.result.error, 'open', f.request.bet);
+        if (!ev.result.ok) return toError({ ...ctx, inFlight: null }, ev.result.error, 'open', f.request.bet, [{ type: 'ABORT_WHEEL' }]);
         const r = ev.result.value;
         const trial: Trial = { trialId: r.trialId, params: f.request, serverSeedHash: r.serverSeedHash, nonce: r.nonce, rung: 0, multiplier: 0, spins: [], pending: null, serverSeed: null, payout: 0 };
         // The first spin follows the stake automatically.

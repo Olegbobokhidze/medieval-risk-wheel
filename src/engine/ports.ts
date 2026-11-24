@@ -55,7 +55,7 @@ export type TrialProvider = {
 
 /** The wheel as the trial sees it. The scene implements it (ADR-0002). */
 export type WheelPort = {
-  /** Start the launch immediately (instant feedback while the request is in flight). */
+  /** Start the launch immediately (instant feedback while a request is in flight). Idempotent while already turning. */
   launch(options: { readonly turbo: boolean; readonly rung: number }): void;
   /** Decelerate onto the server's sector; resolves when the wheel has settled. */
   land(sectorIndex: number, offset: number, options: { readonly turbo: boolean; readonly kind: SectorKind }): Promise<void>;

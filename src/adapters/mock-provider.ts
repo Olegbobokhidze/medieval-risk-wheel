@@ -133,8 +133,9 @@ export class MockProvider implements TrialProvider {
       let { sectorIndex, offset } = await deriveSpin(t.serverSeed, t.params.clientSeed, t.nonce, req.spin, preset.sectors);
       if (forced === ForcedOutcome.ADVANCE || forced === ForcedOutcome.CURSE) {
         const want = forced === ForcedOutcome.ADVANCE ? 'advance' : 'curse';
-        const pick = wheel.find((s, i) => s.kind === want && i >= sectorIndex) ?? wheel.find((s) => s.kind === want);
-        if (pick && pick.index !== sectorIndex) {
+        // QA forcing always moves to a *different* sector of the wanted kind, so it is always detectable.
+        const pick = wheel.find((s, i) => s.kind === want && i > sectorIndex) ?? wheel.find((s) => s.kind === want && s.index !== sectorIndex);
+        if (pick) {
           sectorIndex = pick.index;
           offset = 0.5;
           t.tampered = true;

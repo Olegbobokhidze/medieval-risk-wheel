@@ -179,6 +179,7 @@ describe('trial state machine', () => {
     const r1 = run(createInitialContext(params, 10_000), { type: E.START });
     expect(r1.ctx.state).toBe(TrialState.CONFIGURING);
     expect(r1.ctx.balance).toBe(9_900);
+    expect(r1.effects).toEqual(['LAUNCH_WHEEL', 'OPEN_TRIAL']); // the wheel moves on the press itself
     const r2 = run(r1.ctx, opened());
     expect(r2.ctx.state).toBe(TrialState.SPINNING);
     expect(r2.effects).toEqual(['LAUNCH_WHEEL', 'REQUEST_SPIN']);
@@ -260,6 +261,7 @@ describe('trial state machine', () => {
   it('a failed open refunds; insufficient funds is caught up front', () => {
     const r = run(createInitialContext(params, 10_000), { type: E.START }, { type: E.OPENED, result: { ok: false, requestId: 1, error: { code: 'NETWORK', message: 'x', recoverable: true } } });
     expect(r.ctx.balance).toBe(10_000);
+    expect(r.effects).toContain('ABORT_WHEEL');
     expect(run(r.ctx, { type: E.DISMISS_ERROR }).ctx.state).toBe(TrialState.IDLE);
     const poor = run(createInitialContext(params, 50), { type: E.START });
     expect(poor.ctx.error?.code).toBe('INSUFFICIENT_FUNDS');
